@@ -1,6 +1,9 @@
+// dominio/Localidad.java
 package dominio;
 
-public class Localidad {
+import java.io.Serializable;
+
+public class Localidad implements Serializable {
     private String nombre;
     private int numeroDeHabitantes;
 
@@ -25,6 +28,7 @@ public class Localidad {
         this.numeroDeHabitantes = numeroDeHabitantes;
     }
 
+    @Override
     public String toString() {
         return nombre + " - " + numeroDeHabitantes + " habitantes";
     }

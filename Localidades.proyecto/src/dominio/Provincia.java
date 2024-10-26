@@ -1,13 +1,21 @@
+// dominio/Provincia.java
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Provincia {
+public class Provincia implements Serializable {
+    private String nombre;
     private List<Municipio> municipios;
 
-    public Provincia() {
+    public Provincia(String nombre) {
+        this.nombre = nombre;
         this.municipios = new ArrayList<>();
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void agregarMunicipio(Municipio municipio) {
@@ -22,8 +30,19 @@ public class Provincia {
         return totalHabitantes;
     }
 
+    public Municipio encontrarMunicipio(String nombre) {
+        for (Municipio municipio : municipios) {
+            if (municipio.getNombre().equalsIgnoreCase(nombre)) {
+                return municipio;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Provincia: ").append(nombre).append("\n");
         for (Municipio municipio : municipios) {
             sb.append(municipio).append("\n");
         }
